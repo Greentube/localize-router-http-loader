@@ -27,8 +27,7 @@ export function HttpLoaderFactory(translate: TranslateService, location: Locatio
 LocalizeRouterModule.forRoot(routes, {
     parser: {
         provide: LocalizeParser,
-        useFactory: (translate, location, settings, http) =>
-            new HttpLoaderFactory,
+        useFactory: HttpLoaderFactory,
         deps: [TranslateService, Location, LocalizeRouterSettings, Http]
     }
 })
