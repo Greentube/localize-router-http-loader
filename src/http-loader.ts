@@ -1,8 +1,16 @@
-import { LocalizeParser, LocalizeRouterSettings, ILocalizeRouterParserConfig } from 'localize-router';
+import { LocalizeParser, LocalizeRouterSettings } from 'localize-router';
 import { TranslateService } from '@ngx-translate/core';
 import { Http, Response } from '@angular/http';
 import { Routes } from '@angular/router';
 import { Location } from '@angular/common';
+
+/**
+ * Config interface
+ */
+export interface ILocalizeRouterParserConfig {
+  locales: Array<string>;
+  prefix?: string;
+}
 
 export class LocalizeRouterHttpLoader extends LocalizeParser {
   /**
