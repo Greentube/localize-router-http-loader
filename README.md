@@ -7,6 +7,9 @@
 
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Parameters](#parameters)
+  - [Config file](#config-file)
+- [License](#license)
 
 ## Installation
 
@@ -42,6 +45,25 @@ export function HttpLoaderFactory(translate: TranslateService, location: Locatio
   return new LocalizeRouterHttpLoader(translate, location, settings, http, 'my/custom/url/to/file.json');
 }
 ```
+
+### Config file
+
+JSON config file has following structure:
+```
+{
+    "locales": ["en", "de", ...],
+    "prefix": "MY_PREFIX"
+}
+```
+
+```ts
+interface ILocalizeRouterParserConfig {
+    locales: Array<string>;
+    prefix?: string;
+}
+```
+
+Prefix field is not mandatory and default value is empty string.
 
 ## License
 Licensed under MIT
