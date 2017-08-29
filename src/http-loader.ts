@@ -1,6 +1,6 @@
 import { LocalizeParser, LocalizeRouterSettings } from 'localize-router';
 import { TranslateService } from '@ngx-translate/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Routes } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -21,7 +21,7 @@ export class LocalizeRouterHttpLoader extends LocalizeParser {
    * @param http
    * @param path
    */
-  constructor(translate: TranslateService, location: Location, settings: LocalizeRouterSettings, private http: Http, private path: string = 'assets/locales.json') {
+  constructor(translate: TranslateService, location: Location, settings: LocalizeRouterSettings, private http: HttpClient, private path: string = 'assets/locales.json') {
     super(translate, location, settings);
   }
 
@@ -32,8 +32,8 @@ export class LocalizeRouterHttpLoader extends LocalizeParser {
    */
   load(routes: Routes): Promise<any> {
     return new Promise((resolve: any) => {
+      console.log(this.http, this.http.get);
       this.http.get(`${this.path}`)
-        .map((res: Response) => res.json())
         .subscribe((data: ILocalizeRouterParserConfig) => {
           this.locales = data.locales;
           this.prefix = data.prefix || '';
@@ -41,5 +41,4 @@ export class LocalizeRouterHttpLoader extends LocalizeParser {
         });
     });
   }
-
 }
