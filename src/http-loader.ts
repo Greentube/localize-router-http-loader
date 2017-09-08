@@ -32,7 +32,6 @@ export class LocalizeRouterHttpLoader extends LocalizeParser {
    */
   load(routes: Routes): Promise<any> {
     return new Promise((resolve: any) => {
-      console.log(this.http, this.http.get);
       this.http.get(`${this.path}`)
         .subscribe((data: ILocalizeRouterParserConfig) => {
           this.locales = data.locales;
