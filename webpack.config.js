@@ -1,6 +1,6 @@
 const helpers = require('./config/helpers');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   devtool: '#source-map',
@@ -51,7 +51,7 @@ module.exports = {
       }
     }),
 
-    new CleanWebpackPlugin(['bundles'], {
+    new CleanWebpackPlugin({
       root: helpers.root(),
       verbose: false,
       dry: false
